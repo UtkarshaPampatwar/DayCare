@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj": {}
+    "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj": {
+    "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
+        "projectUniqueName": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
         "projectName": "DayCareManagement",
-        "projectPath": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
+        "projectPath": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
         "packagesPath": "C:\\Users\\putka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCareManagementSystem\\DayCareManagement\\obj\\",
+        "outputPath": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCare\\DayCareManagementSystem\\DayCareManagement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,6 +40,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

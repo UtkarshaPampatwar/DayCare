@@ -12,5 +12,8 @@ namespace DayCareManagement.Models
         private List<Teacher> teachers = new List<Teacher>();
 
         private List<Student> students = new List<Student>();
+        private List<Group> groupList = new List<Group>();
+        private int classroomID;
+        private EnrollmentRules enrollmentRule;
     }
 }
