@@ -7,14 +7,14 @@ namespace DayCareManagement.Models
 {
     public class Teacher:Person
     {
-        private int TeacherId { get; set; }
-        private int GroupID { get; set; }
-        private int ClassID { get; set; }
-        private Boolean IsAvailable { get; set; }
-        private String Address { get; set; }
-        private int Credit { get; set; }
+        public int TeacherId { get; set; }
+        public int GroupID { get; set; }
+        public int ClassID { get; set; }
+        public Boolean IsAvailable { get; set; }
+        public String Address { get; set; }
+        public int Credit { get; set; }
 
-        private String PhoneNumber { get; set; }
+        public String PhoneNumber { get; set; }
         public Teacher()
         {
 

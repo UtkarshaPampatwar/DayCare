@@ -8,8 +8,8 @@ namespace DayCareManagement.Models
 {
 	public class ImmunizationRules
 	{
-		private int maxNumberOfDoses;
-		private List<int> dosageIntervals;
+		public int maxNumberOfDoses;
+		public List<int> dosageIntervals;
 
 		public ImmunizationRules()
 		{

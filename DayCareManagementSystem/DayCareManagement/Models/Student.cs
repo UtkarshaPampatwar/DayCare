@@ -8,16 +8,16 @@ namespace DayCareManagement.Models
 {
     public class Student:Person
     {
-        private int StudentId { get; set; }
-        private String FatherName { get; set; }
-        private String MotherName { get; set; }
-        private List<Immunization> ImmunizationRecord { get; set; }
-        private DateTime DateOfJoining { get; set; }
-        private int GroupID { get; set; }
-        private int ClassID { get; set; }
-        private String Address { get; set; }
-        private String PhoneNumber { get; set; }
-        private DateTime DateOfBirth { get; set; }
+        public int StudentId { get; set; }
+        public String FatherName { get; set; }
+        public String MotherName { get; set; }
+        public List<Immunization> ImmunizationRecord { get; set; }
+        public DateTime DateOfJoining { get; set; }
+        public int GroupID { get; set; }
+        public int ClassID { get; set; }
+        public String Address { get; set; }
+        public String PhoneNumber { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         public Student(String firstName, String lastName, int age, String address, String fatherName, String motherName, String phoneNumber, DateTime dateOfJoining, int studentID, DateTime dateOfBirth)
         {
@@ -37,7 +37,7 @@ namespace DayCareManagement.Models
             return $"StudentId {StudentId} | FatherName {FatherName}";
         }
 
-        public void showDetails()
+        public void showStudentDetails()
         {
             Console.WriteLine(this.ToString());
         }

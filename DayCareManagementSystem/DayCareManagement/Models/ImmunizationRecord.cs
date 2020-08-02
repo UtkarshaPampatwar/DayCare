@@ -8,12 +8,12 @@ namespace DayCareManagement.Models
 {
 	public class ImmunizationRecord:Immunization
 	{
-		private String immunizationName;
-		private int numberOfDosesGiven;
-		private int numberOfDosesPending;
-		private DateTime nextDueDate;
-		private Boolean isOverdue;
-		private Boolean isImmune;
+		public String immunizationName;
+		public int numberOfDosesGiven;
+		public int numberOfDosesPending;
+		public DateTime nextDueDate;
+		public Boolean isOverdue;
+		public Boolean isImmune;
 
 		public bool checkImmuinityStatus()
 		{
@@ -82,6 +82,10 @@ namespace DayCareManagement.Models
 			this.numberOfDosesPending = DayCareController.getImmunizationRule(this.immunizationName).getMaxNumberOfDoses() - this.numberOfDosesGiven;
 			this.isOverdue = false;
 			this.isImmune = false;
+		}
+		public ImmunizationRecord()
+		{
+
 		}
 	}
 

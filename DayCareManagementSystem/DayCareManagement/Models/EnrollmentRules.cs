@@ -8,12 +8,12 @@ namespace DayCareManagement.Models
 {
 	public class EnrollmentRules
 	{
-		private int MinAge { get; set; }
-		private int MaxAge { get; set; }
-		private String AgeRange { get; set; }
-		private int GroupSize { get; set; }
-		private String Ratio { get; set; }
-		private int MaxGroup { get; set; }
+		public int MinAge { get; set; }
+		public int MaxAge { get; set; }
+		public String AgeRange { get; set; }
+		public int GroupSize { get; set; }
+		public String Ratio { get; set; }
+		public int MaxGroup { get; set; }
 
 		public EnrollmentRules(int minAge, int maxAge, String ageRange, int groupSize, String ratio, int maxGroup)
 		{

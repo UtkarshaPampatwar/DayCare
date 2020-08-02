@@ -5995,23 +5995,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\putka\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Welcome\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
+      "projectUniqueName": "D:\\My files\\ajay\\Masters\\SEM4\\C#\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
       "projectName": "DayCareManagement",
-      "projectPath": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
-      "packagesPath": "C:\\Users\\putka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project\\DayCare\\DayCareManagementSystem\\DayCareManagement\\obj\\",
+      "projectPath": "D:\\My files\\ajay\\Masters\\SEM4\\C#\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
+      "packagesPath": "C:\\Users\\Welcome\\.nuget\\packages\\",
+      "outputPath": "D:\\My files\\ajay\\Masters\\SEM4\\C#\\DayCare\\DayCareManagementSystem\\DayCareManagement\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\putka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Welcome\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

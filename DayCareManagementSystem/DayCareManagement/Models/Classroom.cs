@@ -7,13 +7,32 @@ namespace DayCareManagement.Models
 {
     public class Classroom
     {
-        private int capcity { get; set; }
+        public int capcity { get; set; }
 
-        private List<Teacher> teachers = new List<Teacher>();
+        public List<Teacher> teachers = new List<Teacher>();
 
-        private List<Student> students = new List<Student>();
-        private List<Group> groupList = new List<Group>();
-        private int classroomID;
-        private EnrollmentRules enrollmentRule;
+        public List<Student> students = new List<Student>();
+        public List<Group> groupList = new List<Group>();
+        public int classroomID;
+        public EnrollmentRules enrollmentRule;
+        public Classroom(int classroomID, EnrollmentRules enrollmentRule)
+        {
+            this.classroomID = classroomID;
+            this.enrollmentRule = enrollmentRule;
+        }
+        public int getNumOfGroups()
+        {
+            return this.groupList.Count;
+        }
+
+        public void showClassDetails()
+        {
+            Console.WriteLine(this.ToString());
+        }
+        public void addGroupObj(Group group)
+        {
+            this.groupList.Add(group);
+        }
     }
+    
 }

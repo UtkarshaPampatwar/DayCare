@@ -8,11 +8,11 @@ namespace DayCareManagement.Models
 {
     public class Group
     {
-        private int GroupID { get; set; }
-        private List<Student> StudentList = new List<Student>();
-        private Teacher teacher { get; set; } = null;   
-        private EnrollmentRules EnrollmentRule { get; set; } = null;
-        private int ClassID { get; set; }
+        public int GroupID { get; set; }
+        public List<Student> StudentList = new List<Student>();
+        public Teacher teacher { get; set; } = null;
+        public EnrollmentRules EnrollmentRule { get; set; } = null;
+        public int ClassID { get; set; }
 
         public Group(int GroupId, EnrollmentRules EnrollmentRule)
         {
