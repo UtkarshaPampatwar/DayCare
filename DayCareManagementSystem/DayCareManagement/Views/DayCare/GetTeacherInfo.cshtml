@@ -1,0 +1,41 @@
+﻿
+@model DayCareManagement.Models.Teacher
+@{
+    ViewData["Title"] = "GetTeacherInfo";
+}
+
+@using (Html.BeginForm("RetrieveTeacherInfo", "DayCare", FormMethod.Post))
+{
+    <h1>GetTeacherInfo</h1>
+    <label>Enter the teacher Id: </label>@Html.TextBox("ID")
+
+    <input type="submit" value="Search" />
+    <p></p>
+
+}
+@{ 
+    var data = ViewData.Model;
+    if (data != null)
+    {
+        <table style="width:100%;border: 1px solid">
+            <tr>
+
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Class ID</th>
+                <th>Group ID</th>
+                
+            </tr>
+            <tr>
+                <td>@data.FirstName</td>
+                <td>@data.LastName</td>
+                <td>@data.ClassID</td>
+                <td>@data.GroupID</td>
+                
+            </tr>
+
+        </table>
+        <p></p>
+        }
+    }
+    <a asp-area="" asp-controller="DayCare" asp-action="Login">Back</a>

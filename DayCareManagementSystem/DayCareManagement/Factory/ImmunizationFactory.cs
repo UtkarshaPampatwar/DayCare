@@ -5,8 +5,8 @@ using DayCareManagement.Models;
 
 namespace DayCareManagement.Factory
 {
-    public class ImmunizationFactory
-    {
+	public class ImmunizationFactory
+	{
 
 		private static ImmunizationFactory immunizationFactoryInstance;
 

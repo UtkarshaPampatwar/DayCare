@@ -4,5 +4,9 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form asp-controller="DayCare" asp-action="Index">
+        <input type="text" name="username" value="admin" />
+        <input type="password" name="password" value="admin" />
+        <input type="submit" class="btn btn-primary" />
+    </form>
 </div>

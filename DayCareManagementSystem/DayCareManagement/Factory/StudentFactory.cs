@@ -6,16 +6,23 @@ using DayCareManagement.Models;
 
 namespace DayCareManagement.Factory
 {
-	class StudentFactory
+	public class StudentFactory
 	{
-		public  StudentFactory instance = null;
+		public  static StudentFactory instance = null;
 		public static int StudentCount { get; set; } = 0;
 		CultureInfo provider = CultureInfo.InvariantCulture;
-		/*public  int getStudentCount()
+		public void setStudentCount(int studentCount)
 		{
-			return studentCount;
-		}*/
-
+			StudentFactory.StudentCount = studentCount;
+		}
+		public static StudentFactory getObj()
+		{
+			if (instance == null)
+			{
+				instance = new StudentFactory();
+			}
+			return instance;
+		}
 		string dateString = "06/15/2008";
 		string format = "d";
 		public StudentFactory()
@@ -67,30 +74,24 @@ namespace DayCareManagement.Factory
 				String phoneNumber = eachLine[7];
 				String dateOfJoining = eachLine[8];
 				String dateOfBirth = eachLine[9];
-				/*if (updateAge) {
+				if (updateAge)
+				{
 					Console.WriteLine("Updating age");
-					DateTime currentDOB =DateTime.ParseExact(dateOfBirth, format, provider);
-		//LocalDateTime newDOB = currentDOB.plusMonths(6);
-					*//*dateOfBirth = dateFormat.format(Date.from(currentDOB.atZone(ZoneId.systemDefault()).toInstant()));*//*
-						//String dob = dateFormat.format(DateofBirth.getDate());
+					DateTime currentDOB = DateTime.Parse(dateOfBirth);
+					//LocalDateTime newDOB = currentDOB.plusMonths(6);
+					//dateOfBirth = dateFormat.format(Date.from(currentDOB.atZone(ZoneId.systemDefault()).toInstant()));
+					//String dob = dateFormat.format(DateofBirth.getDate());
 					String studentData = firstName + "," + lastName + "," + dateOfBirth;
-					System.out.println("Age was "+age);
-					LocalDate currentDate = LocalDate.now().plusMonths(6);
+					Console.WriteLine("Age was " + age);
+					DateTime currentDate = DateTime.Now.AddMonths(6);
 					age = DayCare.getStuAge(studentData, currentDate);
-					Console.WriteLine("New Age is "+age);
-	}*/
-				studentList.Add(new Student(firstName, lastName, age, address, fatherName, motherName, phoneNumber, DateTime.Parse(dateOfJoining), studentID, DateTime.Parse(dateOfBirth)));
+					Console.WriteLine("New Age is " + age);
+				}
+				studentList.Add(new Student(firstName, lastName, age, address, fatherName, motherName, phoneNumber, DateTime.ParseExact(dateOfJoining, "MM/dd/yyyy", null), studentID, DateTime.ParseExact(dateOfBirth, "MM/dd/yyyy", null)));
 			}
 			return studentList;
 		}
-		public StudentFactory getObj()
-		{
-			if (instance == null)
-			{
-				instance = new StudentFactory();
-			}
-			return instance;
-		}
+		
 		//SINGLE
 		
 	}

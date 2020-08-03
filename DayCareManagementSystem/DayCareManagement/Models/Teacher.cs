@@ -20,7 +20,7 @@ namespace DayCareManagement.Models
 
         }
 
-        public Teacher(string FirstName, string LastName, int TeacherId, Boolean isAvailable, String address, String phoneNumber, int credit)
+        public Teacher(string FirstName, string LastName, int TeacherId, Boolean isAvailable, String address, String phoneNumber)
         {
             this.TeacherId = TeacherId;
             this.FirstName = FirstName;
@@ -28,7 +28,7 @@ namespace DayCareManagement.Models
             this.IsAvailable = isAvailable;
             this.Address = address;
             this.PhoneNumber = phoneNumber;
-            this.Credit = credit;
+            //this.Credit = credit;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DayCareManagement.Models
         public int StudentId { get; set; }
         public String FatherName { get; set; }
         public String MotherName { get; set; }
-        public List<Immunization> ImmunizationRecord { get; set; }
+        public List<Immunization> ImmunizationRecord;
         public DateTime DateOfJoining { get; set; }
         public int GroupID { get; set; }
         public int ClassID { get; set; }
@@ -19,6 +19,10 @@ namespace DayCareManagement.Models
         public String PhoneNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
 
+        public Student()
+        {
+
+        }
         public Student(String firstName, String lastName, int age, String address, String fatherName, String motherName, String phoneNumber, DateTime dateOfJoining, int studentID, DateTime dateOfBirth)
         {
             this.FirstName = firstName;
@@ -41,22 +45,14 @@ namespace DayCareManagement.Models
         {
             Console.WriteLine(this.ToString());
         }
-        /*private double grade { get; }
-        private double gpa { get; set; }
-
-        public Student()
+        public List<Immunization> getImmunizationRecord()
         {
-
+            return ImmunizationRecord;
+        }
+        public void setImmunizationRecord(List<Immunization> immunizationRecord)
+        {
+            this.ImmunizationRecord = immunizationRecord;
         }
 
-        public Student(int Id, string FirstName, string LastName, int Age, double grade,double gpa)
-        {
-            this.Id = Id;
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.Age = Age;
-            this.grade = grade;
-            this.gpa = gpa;
-        }*/
     }
 }

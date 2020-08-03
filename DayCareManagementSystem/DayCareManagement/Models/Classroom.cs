@@ -33,6 +33,16 @@ namespace DayCareManagement.Models
         {
             this.groupList.Add(group);
         }
+
+        public List<Group> getGroupList()
+        {
+            return this.groupList;
+        }
+
+        public void setGroupList(List<Group> groupList)
+        {
+            this.groupList = groupList;
+        }
     }
     
 }

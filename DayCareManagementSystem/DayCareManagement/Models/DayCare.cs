@@ -124,7 +124,7 @@ namespace DayCareManagement.Models
 				}
 			}
 			Console.WriteLine("Invalid Age input for Student");
-			return null;
+			throw new Exception("Invalid age");
 				/*throw new InvalidValue("Invalid Age input for Student");*/
 
 			}
@@ -266,7 +266,7 @@ private List<Immunization> getImmunizationObject(String csvData, ImmunizationFac
 	List<Immunization> immunizationRec = new List<Immunization>();
 		String[] str = csvData.Split(",");
 
-immunizationRec.Add(immunizationFactoryInstance.getObject(str[1]+","+"Hib"));
+		immunizationRec.Add(immunizationFactoryInstance.getObject(str[1]+","+"Hib"));
 		immunizationRec.Add(immunizationFactoryInstance.getObject(str[2]+","+"DTap"));
 		immunizationRec.Add(immunizationFactoryInstance.getObject(str[3]+","+"Polio"));
 		immunizationRec.Add(immunizationFactoryInstance.getObject(str[4]+","+"Hepatitis B"));
@@ -476,6 +476,6 @@ public Classroom setClassIDGroupID(Student student, EnrollmentRules rule)
 	}
 		throw new Exception("Invalid input while assigning Class ID");
 		}
-    }
+	}
 }
 

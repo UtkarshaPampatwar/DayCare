@@ -1,12 +1,16 @@
-﻿using System;
+﻿using DayCareManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DayCareManagement.Factory
 {
-    class DayCareFactory
-    {
+	public class DayCareFactory
+	{
 		private static DayCareFactory instance = null;
+		private EnrollmentRulesFactory enr = null;
+		private StudentFactory sfr = null;
+		Models.DayCare dayCare = null;
 		private DayCareFactory()
 		{
 		}
@@ -22,8 +26,32 @@ namespace DayCareManagement.Factory
 
 		public Models.DayCare getDayCareObj()
 		{
-			Models.DayCare dayCare = new Models.DayCare();
+			
+			if (dayCare == null)
+			{
+				dayCare = new Models.DayCare();
+			}
+			
 			return dayCare;
 		}
+
+		public EnrollmentRulesFactory getEnrollmentRuleObj()
+		{
+			if (enr == null)
+			{
+				enr = new EnrollmentRulesFactory();
+			}
+			return enr;
+		}
+
+		public StudentFactory getStudentObj()
+		{
+			if (sfr == null)
+			{
+				sfr = new StudentFactory();
+			}
+			return sfr;
+		}
+
 	}
 }

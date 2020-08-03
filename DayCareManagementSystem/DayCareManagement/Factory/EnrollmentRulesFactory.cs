@@ -5,21 +5,21 @@ using DayCareManagement.Models;
 
 namespace DayCareManagement.Factory
 {
-    class EnrollmentRulesFactory
-    {
-		private static EnrollmentRulesFactory instance = null;
-		private EnrollmentRulesFactory()
+	public class EnrollmentRulesFactory
+	{
+		//private static EnrollmentRulesFactory instance = null;
+		public EnrollmentRulesFactory()
 		{
 		}
 
-		public static EnrollmentRulesFactory getObj()
+		/*public static EnrollmentRulesFactory getObj()
 		{
 			if (instance == null)
 			{
 				instance = new EnrollmentRulesFactory();
 			}
 			return instance;
-		}
+		}*/
 
 		public List<EnrollmentRules> getRuleObj(List<String> enrollmentRegulationList)
 		{

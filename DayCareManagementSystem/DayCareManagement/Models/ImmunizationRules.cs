@@ -22,8 +22,8 @@ namespace DayCareManagement.Models
 		public DateTime getNextDueDate(DateTime bDate, int numberOfDosesPending)
 		{
 			if (numberOfDosesPending > 0)
-			{
-				bDate = bDate.AddMonths(this.dosageIntervals.IndexOf(this.maxNumberOfDoses - numberOfDosesPending));
+			{ 
+				bDate = bDate.AddMonths(this.dosageIntervals[(this.maxNumberOfDoses - numberOfDosesPending)]);
 			}
 			return bDate;
 		}

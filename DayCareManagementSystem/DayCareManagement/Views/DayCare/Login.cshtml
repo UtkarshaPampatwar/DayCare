@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <form asp-controller="DayCare" asp-action="Rules">
+            <p></p>
+            <button class="btn btn-success">Rules</button>
+        </form>
+        <form asp-controller="DayCare" asp-action="GetStudentInfo">
+            <p></p>
+            <button class="btn btn-success">View Students</button>
+        </form>
+        <form asp-controller="DayCare" asp-action="GetTeacherInfo">
+            <p></p>
+            <button class="btn btn-success">View Teachers</button>
+        </form>
+        <form asp-controller="DayCare" asp-action="AddStudent">
+            <p></p>
+            <button class="btn btn-success">Add Students</button>
+        </form>
+        <form asp-controller="DayCare" asp-action="AddTeacher">
+            <p></p>
+            <button class="btn btn-success">Add Teachers</button>
+        </form>
+
+    </div>

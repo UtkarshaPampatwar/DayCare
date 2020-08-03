@@ -10,7 +10,7 @@ namespace DayCareManagement.Models
     {
         public int GroupID { get; set; }
         public List<Student> StudentList = new List<Student>();
-        public Teacher teacher { get; set; } = null;
+        public Teacher teacher;
         public EnrollmentRules EnrollmentRule { get; set; } = null;
         public int ClassID { get; set; }
 
@@ -33,13 +33,30 @@ namespace DayCareManagement.Models
         {
             Console.WriteLine(this.ToString());
         }
+        public List<Student> getStudentList()
+        {
+            return this.StudentList;
+        }
 
+        public void setStudentList(List<Student> studentList)
+        {
+            this.StudentList = studentList;
+        }
         public override string ToString()
         {
             return $"Group {GroupID} | EnrollmentRule {EnrollmentRule}";
         }
 
-        
+        public Teacher getTeacher()
+        {
+            return teacher;
+        }
+
+
+        public void setTeacher(Teacher teacher)
+        {
+            this.teacher = teacher;
+        }
     }
 
 }

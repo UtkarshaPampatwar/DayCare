@@ -56,9 +56,9 @@ namespace DayCareManagement.Factory
 
 		}*/
 
-		public virtual IList<Teacher> getTeacherObj(IList<string> teacherData)
+		public virtual List<Teacher> getTeacherObj(List<string> teacherData)
 		{
-			IList<Teacher> teacherList = new List<Teacher>();
+			List<Teacher> teacherList = new List<Teacher>();
 			IEnumerator<string> it = teacherData.GetEnumerator();
 			string[] eachLine = null;
 			while (it.MoveNext())
@@ -71,8 +71,8 @@ namespace DayCareManagement.Factory
 				String isAvailable = eachLine[3];
 				String address = eachLine[4];
 				String phoneNumber = eachLine[5];
-				String credit = eachLine[6];
-				teacherList.Add(new Teacher(firstName, lastName, teacherID, Boolean.Parse(isAvailable), address, phoneNumber, int.Parse(credit)));
+				//String credit = eachLine[6];
+				teacherList.Add(new Teacher(firstName, lastName, teacherID, Boolean.Parse(isAvailable), address, phoneNumber));
 			}
 			return teacherList;
 		}
@@ -89,10 +89,10 @@ namespace DayCareManagement.Factory
 			//bool isAvailable = new Boolean;
 			String address = eachLine[2];
 			String phoneNumber = eachLine[4];
-			String credit = eachLine[5];
+			//String credit = eachLine[5];
 			//Dan  Peters  10  false  Yes  9876543210
 			Console.WriteLine($"{firstName} +  {lastName} + {teacherCount} + {isAvailable} + {address} + {phoneNumber}");
-			return new Teacher(firstName, lastName, teacherCount, Boolean.Parse(isAvailable), address, phoneNumber, int.Parse(credit));
+			return new Teacher(firstName, lastName, teacherCount, Boolean.Parse(isAvailable), address, phoneNumber);
 		}
 	}
 }

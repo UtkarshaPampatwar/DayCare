@@ -1,0 +1,117 @@
+﻿@model DayCareManagement.Models.Student
+@{
+    ViewData["Title"] = "GetStudentInfo";
+}
+@using (Html.BeginForm("RetrieveStudentInfo", "DayCare", FormMethod.Post))
+{
+    <h1>GetStudentInfo</h1>
+    <label>Enter the student Id: </label>@Html.TextBox("ID")
+
+    <input type="submit" value="Search" />
+    <p></p>
+
+}
+@{
+    var data = ViewData.Model;
+    if (data != null)
+    {
+        <table style="width:100%;border: 1px solid">
+            <tr>
+
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Father's Name</th>
+                <th>Mother's Name</th>
+                <th>Date of Joining</th>
+                <th>Date of Birth</th>
+            </tr>
+            <tr>
+                <td>@data.FirstName</td>
+                <td>@data.LastName</td>
+                <td>@data.Age</td>
+                <td>@data.Address</td>
+                <td>@data.FatherName</td>
+                <td>@data.MotherName</td>
+                <td>@data.DateOfJoining</td>
+                <td>@data.DateOfBirth</td>
+            </tr>
+
+        </table>
+        <p></p>
+        <table style="width:100%;border: 1px solid">
+            <tr>
+                <th>Hib</th>
+                <th>DTap</th>
+                <th>Polio</th>
+                <th>Hep B</th>
+                <th>MMR</th>
+                <th>Varicella</th>
+            </tr>
+            <tr>
+                <td>
+                    @{
+                        if (@data.getImmunizationRecord() != null)
+                            @data.getImmunizationRecord().Where(x => x.getImmunizationName() == "Hib").FirstOrDefault().getNextDueDate();
+
+
+                    }
+
+                </td>
+                <td>
+                    @{
+                        if (@data.getImmunizationRecord() != null)
+                            @data.getImmunizationRecord().Where(x => x.getImmunizationName() == "DTap").FirstOrDefault().getNextDueDate();
+
+
+                    }
+
+                </td>
+                <td>
+                    @{
+                        if (@data.getImmunizationRecord() != null)
+                            @data.getImmunizationRecord().Where(x => x.getImmunizationName() == "Polio").FirstOrDefault().getNextDueDate();
+
+
+                    }
+
+                </td>
+                <td>
+                    @{
+                        if (@data.getImmunizationRecord() != null)
+                            @data.getImmunizationRecord().Where(x => x.getImmunizationName() == "Hepatitis B").FirstOrDefault().getNextDueDate();
+
+
+                    }
+
+                </td>
+                <td>
+                    @{
+                        if (@data.getImmunizationRecord() != null)
+                            @data.getImmunizationRecord().Where(x => x.getImmunizationName() == "MMR").FirstOrDefault().getNextDueDate();
+
+
+                    }
+
+                </td>
+                <td>
+                    @{
+                        if (@data.getImmunizationRecord() != null)
+                            @data.getImmunizationRecord().Where(x => x.getImmunizationName() == "Varicella").FirstOrDefault().getNextDueDate();
+
+
+                    }
+
+                </td>
+            </tr>
+
+
+
+
+        </table>
+    }
+}
+
+<p></p>
+<a asp-area="" asp-controller="DayCare" asp-action="Login">Back</a>
