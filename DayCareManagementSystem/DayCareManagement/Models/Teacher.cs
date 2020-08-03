@@ -30,5 +30,50 @@ namespace DayCareManagement.Models
             this.PhoneNumber = phoneNumber;
             //this.Credit = credit;
         }
+
+        public String getAddress()
+        {
+            return Address;
+        }
+
+        public void setAddress(String address)
+        {
+            this.Address = address;
+        }
+
+        public String getPhoneNumber()
+        {
+            return PhoneNumber;
+        }
+
+        public void setPhoneNumber(String phoneNumber)
+        {
+            this.PhoneNumber = phoneNumber;
+        }
+
+        public bool isAvailable()
+        {
+            return IsAvailable;
+        }
+        public bool getisAvailable()
+        {
+            return this.IsAvailable;
+        }
+
+        public void setAvailable(bool isAvailable)
+        {
+            this.IsAvailable = isAvailable;
+        }
+
+        public int getTeacherID()
+        {
+            return this.TeacherId;
+        }
+
+        public void setTeacherID(int teacherID)
+        {
+            this.TeacherId = teacherID;
+        }
+
     }
 }

@@ -29,5 +29,29 @@ namespace DayCareManagement.Models
         {
             this.ToString();
         }
+        public String getFirstName()
+        {
+            return this.FirstName;
+        }
+
+    
+        public void setFirstName(String firstName)
+            {
+                this.FirstName = firstName;
+
+            }
+
+     
+        public String getLastName()
+            {
+                return this.LastName;
+            }
+
+        
+        public void setLastName(String lastName)
+            {
+                this.LastName = lastName;
+
+            }
     }
 }
