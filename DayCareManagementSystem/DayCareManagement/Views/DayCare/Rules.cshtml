@@ -1,7 +1,33 @@
 ﻿
+@model IEnumerable<Rules>
 @{
     ViewData["Title"] = "Rules";
 }
 
 <h1>Rules</h1>
-<a asp-area="" asp-controller="DayCare" asp-action="Login">Back</a>
+
+@using (Html.BeginForm("Rules", "DayCare", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    @if (Model.Count() > 0)
+    {
+        <hr />
+        <table style="width:100%;border: 1px solid black" cellpadding="0" cellspacing="0">
+            <tr style="width:100%;border: 1px solid black">
+                <th>AgeGroup</th>
+                <th>GroupSize</th>
+                <th>Ratio</th>
+                <th>MaxGroups</th>
+            </tr>
+            @foreach (Rules rules in Model)
+            {
+                <tr style="width:100%;border: 1px solid black">
+                    <td>@rules.AgeGroup</td>
+                    <td>@rules.GroupSize</td>
+                    <td>@rules.Ratio</td>
+                    <td>@rules.MaxGroups</td>
+                </tr>
+            }
+        </table>
+    }
+    <p></p>
+    <a asp-area="" asp-controller="DayCare" asp-action="Login">Back</a>

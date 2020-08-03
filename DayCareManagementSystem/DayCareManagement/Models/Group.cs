@@ -10,10 +10,18 @@ namespace DayCareManagement.Models
     {
         public int GroupID { get; set; }
         public List<Student> StudentList = new List<Student>();
-        public Teacher teacher;
-        public EnrollmentRules EnrollmentRule { get; set; } = null;
+        public Teacher teacher = null;
+        public EnrollmentRules EnrollmentRule = null;
         public int ClassID { get; set; }
 
+        public Teacher getTeacher()
+        {
+            return teacher;
+        }
+        public void setTeacher(Teacher teacher)
+        {
+            this.teacher = teacher;
+        }
         public Group(int GroupId, EnrollmentRules EnrollmentRule)
         {
             this.GroupID = GroupId;
@@ -37,6 +45,15 @@ namespace DayCareManagement.Models
         {
             return this.StudentList;
         }
+        public EnrollmentRules getEnrollmentRule()
+        {
+            return EnrollmentRule;
+        }
+
+        public void setEnrollmentRule(EnrollmentRules enrollmentRule)
+        {
+            this.EnrollmentRule = enrollmentRule;
+        }
 
         public void setStudentList(List<Student> studentList)
         {
@@ -47,16 +64,7 @@ namespace DayCareManagement.Models
             return $"Group {GroupID} | EnrollmentRule {EnrollmentRule}";
         }
 
-        public Teacher getTeacher()
-        {
-            return teacher;
-        }
-
-
-        public void setTeacher(Teacher teacher)
-        {
-            this.teacher = teacher;
-        }
+       
     }
 
 }

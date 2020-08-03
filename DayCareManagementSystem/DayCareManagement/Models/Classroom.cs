@@ -9,9 +9,9 @@ namespace DayCareManagement.Models
     {
         public int capcity { get; set; }
 
-        public List<Teacher> teachers = new List<Teacher>();
+        //public List<Teacher> teachers = new List<Teacher>();
 
-        public List<Student> students = new List<Student>();
+        //public List<Student> students = new List<Student>();
         public List<Group> groupList = new List<Group>();
         public int classroomID;
         public EnrollmentRules enrollmentRule;
@@ -42,6 +42,15 @@ namespace DayCareManagement.Models
         public void setGroupList(List<Group> groupList)
         {
             this.groupList = groupList;
+        }
+        public int getClassroomID()
+        {
+            return classroomID;
+        }
+
+        public void setClassroomID(int classroomID)
+        {
+            this.classroomID = classroomID;
         }
     }
     

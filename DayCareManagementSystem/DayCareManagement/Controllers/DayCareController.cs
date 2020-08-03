@@ -4,13 +4,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using DayCareManagement.Models;
-using System.IO;
 using DayCareManagement.Factory;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis;
 using System.Globalization;
+using Microsoft.VisualBasic.FileIO;
 
 namespace DayCareManagement.Controllers
 {
@@ -30,7 +29,7 @@ namespace DayCareManagement.Controllers
 		private static String teacherFileName = "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\teacher.csv";
 		private static String demoFileName = "demo.csv";
 		private static String enrollmentRulesFileName = "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\enrollmentRules.csv";
-		private static readonly String immunizationFileName = "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\Student_Immunization_Record.csv";
+		private static String immunizationFileName = "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\Student_Immunization_Record.csv";
 
 
 		private Models.DayCare dayCareObj = null;
@@ -115,12 +114,41 @@ namespace DayCareManagement.Controllers
 		
 		public IActionResult GetTeacherInfo()
 		{
+
 			return View();
 		}
 
+		public void FileTeacherWrite()
+		{
+
+		}
+
+		[HttpPost]
 		public IActionResult Rules()
 		{
-			return View();
+			List<Rules> rules = new List<Rules>();
+			using (TextFieldParser parser = new TextFieldParser(enrollmentRulesFileName))
+			{
+				
+				parser.SetDelimiters(new string[] { "," });
+				parser.HasFieldsEnclosedInQuotes = true;
+
+				// Skip over header line.
+				parser.ReadLine();
+
+				while (!parser.EndOfData)
+				{
+					string[] fields = parser.ReadFields();
+					rules.Add(new Rules
+					{
+						AgeGroup = fields[0],
+						GroupSize = int.Parse(fields[1]),
+						Ratio = fields[2],
+						MaxGroups = fields[3]
+					});
+				}
+			}
+			return View(rules);
 		}
 		public IActionResult AddStudent()
 		{
@@ -131,7 +159,6 @@ namespace DayCareManagement.Controllers
 			return View();
 		}
 		
-
 		public static String getEnrollmentrulesfilename()
 		{
 			return enrollmentRulesFileName;
@@ -162,6 +189,8 @@ namespace DayCareManagement.Controllers
 			return View();
 		}
 
+
+
 		[HttpPost]
 		public IActionResult RetrieveStudentInfo(String ID)
 		{
@@ -174,63 +203,42 @@ namespace DayCareManagement.Controllers
 				s1 = (Student)factory.getDayCareObj().getstudentMap().GetValueOrDefault(id);
 				//studentInfo = s1.StudentId + "," + s1.FirstName + "," + s1.LastName + "," + s1.Age + "," + s1.Address + "," + s1.FatherName + "," + s1.MotherName + "," + s1.PhoneNumber + "," + s1.DateOfJoining + "," + s1.DateOfBirth;
 				Console.WriteLine("studentInfo to be returned is " + studentInfo);
-				
-			}
 
-			//return studentInfo;
-			
+			}
 			return View("GetStudentInfo", s1);
 		}
 
+
 		[HttpPost]
-		public IActionResult RetrieveTeacherInfo(String ID)
+		public IActionResult RetrieveTeacherStudentInfo(String ID)
 		{
-			String teacherInfo = "";
 			int id = int.Parse(ID);
-
+			Teacher t1 = null;
+			List<Student> studentList = new List<Student>();
 			foreach (Classroom classroom in factory.getDayCareObj().getClassroomList())
 			{
 				foreach (Group group in classroom.getGroupList())
 				{
-					
+
 					if (group.getTeacher().TeacherId == id)
 					{
-						Teacher t1 = group.getTeacher();
-						teacherInfo = t1.FirstName + "," + t1.LastName + "," + t1.ClassID + "," + t1.GroupID;
-						
-					}
-				}
-
-			}
-			return View("GetTeacherInfo", teacherInfo);
-		}
-
-		public static List<String> getStudentListForTeacher(String ID)
-		{
-			
-			List<String> studentList = new List<String>();
-			int id = int.Parse(ID);
-			foreach (Classroom classroom in factory.getDayCareObj().getClassroomList())
-			{
-				foreach (Group group in classroom.getGroupList())
-				{
-					if (group.getTeacher().TeacherId == id)
-					{
+						t1 = group.getTeacher();
 						int g1 = group.getTeacher().GroupID;
-						
+
 						if (group.GroupID == g1)
 						{
-							
-							foreach(Student student in group.getStudentList())
+							foreach (Student student in group.getStudentList())
 							{
-								studentList.Add(student.StudentId + "," + student.FirstName + "," + student.LastName + "," + student.Age);
+								studentList.Add(student);
+								
 							}
 						}
 					}
 				}
 			}
-			
-			return studentList;
+			ViewBag.Teachers = t1;
+			ViewBag.Students = studentList;
+			return View("GetTeacherInfo");
 		}
 
 		public static String getStudentImmInfo(String ID)
@@ -261,8 +269,6 @@ namespace DayCareManagement.Controllers
 
 			return studentImmInfo;
 		}
-
-		
 
 		public List<String> sendAllStudentImmunizationDetails()
 		{
@@ -320,7 +326,7 @@ namespace DayCareManagement.Controllers
 		
 		}
 
-		public List<String> getEnrollmentStatus(DayCareController dc)
+		public List<String> getEnrollmentStatus()
 		{
 			
 			List<String> studentdataList = new List<String>();
@@ -339,8 +345,6 @@ namespace DayCareManagement.Controllers
 						int month = enrollmeantdate.Month + 1;
 						int date = enrollmeantdate.Day;
 						DateTime l2 = DateTime.Now;
-						//DateTime l1 = DateTime.Now(year, month, date);
-						//Period age = Period.between(LocalDate.now(), l1);
 						int diff_year = l2.Year - year;
 						int diff_month = l2.Month - month;
 						int diff_day = l2.Day - date;
@@ -406,10 +410,14 @@ namespace DayCareManagement.Controllers
 				rulesList.Add(rule);
 			}
 
-			//fileutil.writeTextFile(enrollmentRulesFileName, rulesList);
-			System.IO.File.WriteAllText(enrollmentRulesFileName, rulesList.ToString());
+			System.IO.File.WriteAllLines(enrollmentRulesFileName, rulesList);
 			createDayCareImmunizationRules();
-			
+
+			//Teacher Factory object initialization
+			TeacherFactory teacherFactoryObj = TeacherFactory.getTeacherFactoryObj();
+			List<String> teacher_data = System.IO.File.ReadLines(teacherFileName).ToList();
+			Console.WriteLine("Student File read successfully");
+			day.setTeacherList(teacherFactoryObj.getTeacherObj(teacher_data));
 
 			//Student Factory object inittialization
 			StudentFactory studentFactoryObj = StudentFactory.getObj();
@@ -417,11 +425,6 @@ namespace DayCareManagement.Controllers
 			Console.WriteLine("Student File read successfully");
 			List<Student> studentList = studentFactoryObj.initStudentObj(student_data, false);
 			day.enrollStudent(studentList);
-
-			//Teacher Factory object initialization
-			TeacherFactory teacherFactoryObj = TeacherFactory.getTeacherFactoryObj();
-			List<String> teacher_data = System.IO.File.ReadLines(teacherFileName).ToList();
-			day.setTeacherList(teacherFactoryObj.getTeacherObj(teacher_data));
 
 			List<String> immunization_data = System.IO.File.ReadLines(immunizationFileName).ToList();
 			day.mapStudentIDToImmunizationData(immunization_data, studentList, day.getImmunizationFactoryInstance());

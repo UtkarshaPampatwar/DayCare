@@ -5,7 +5,7 @@
 @using (Html.BeginForm("RetrieveStudentInfo", "DayCare", FormMethod.Post))
 {
     <h1>GetStudentInfo</h1>
-    <label>Enter the student Id: </label>@Html.TextBox("ID")
+    <label>Enter the student Id: <span></span> </label>@Html.TextBox("ID")
 
     <input type="submit" value="Search" />
     <p></p>
@@ -15,8 +15,8 @@
     var data = ViewData.Model;
     if (data != null)
     {
-        <table style="width:100%;border: 1px solid">
-            <tr>
+        <table style="width:100%;border: 1px solid black">
+            <tr style="border: 1px solid black">
 
                 <th>FirstName</th>
                 <th>LastName</th>
@@ -27,7 +27,7 @@
                 <th>Date of Joining</th>
                 <th>Date of Birth</th>
             </tr>
-            <tr>
+            <tr style="border: 1px solid black">
                 <td>@data.FirstName</td>
                 <td>@data.LastName</td>
                 <td>@data.Age</td>
@@ -40,8 +40,8 @@
 
         </table>
         <p></p>
-        <table style="width:100%;border: 1px solid">
-            <tr>
+        <table style="width:100%;border: 1px solid black">
+            <tr style="border: 1px solid black">
                 <th>Hib</th>
                 <th>DTap</th>
                 <th>Polio</th>
@@ -49,7 +49,7 @@
                 <th>MMR</th>
                 <th>Varicella</th>
             </tr>
-            <tr>
+            <tr style="border: 1px solid black">
                 <td>
                     @{
                         if (@data.getImmunizationRecord() != null)

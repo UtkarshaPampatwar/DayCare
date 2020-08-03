@@ -1,41 +1,66 @@
 ﻿
 @model DayCareManagement.Models.Teacher
+
 @{
     ViewData["Title"] = "GetTeacherInfo";
 }
 
-@using (Html.BeginForm("RetrieveTeacherInfo", "DayCare", FormMethod.Post))
+@using (Html.BeginForm("RetrieveTeacherStudentInfo", "DayCare", FormMethod.Post))
 {
-    <h1>GetTeacherInfo</h1>
+    
     <label>Enter the teacher Id: </label>@Html.TextBox("ID")
 
     <input type="submit" value="Search" />
     <p></p>
-
 }
-@{ 
-    var data = ViewData.Model;
-    if (data != null)
+@{
+    var teacherdata = ViewBag.Teachers;
+    var studentdata = ViewBag.Students;
+
+    if (teacherdata != null && studentdata != null)
     {
-        <table style="width:100%;border: 1px solid">
-            <tr>
+        <h3>Teacher Info</h3>
+        <table style="width:100%;border: 1px solid black">
+            <tr style="border: 1px solid black">
 
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>Class ID</th>
                 <th>Group ID</th>
-                
+
             </tr>
-            <tr>
-                <td>@data.FirstName</td>
-                <td>@data.LastName</td>
-                <td>@data.ClassID</td>
-                <td>@data.GroupID</td>
-                
+            <tr style="border: 1px solid">
+                <td>@teacherdata.FirstName</td>
+                <td>@teacherdata.LastName</td>
+                <td>@teacherdata.ClassID</td>
+                <td>@teacherdata.GroupID</td>
+
             </tr>
 
         </table>
+        <br />
+        <h3>Student Teacher Info</h3>
+        <table style="width:100%;border: 1px solid black">
+            <tr style="border: 1px solid black">
+                <th>Student ID</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Age</th>
+
+            </tr>
+
+            @foreach (Student student in studentdata)
+            {
+                <tr style="border: 1px solid black">
+                    <td>@student.StudentId</td>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@student.Age</td>
+                </tr>
+            }
+        </table>
         <p></p>
-        }
     }
-    <a asp-area="" asp-controller="DayCare" asp-action="Login">Back</a>
+}
+
+<a asp-area="" asp-controller="DayCare" asp-action="Login">Back</a>

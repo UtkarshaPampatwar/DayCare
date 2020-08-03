@@ -12,7 +12,7 @@ namespace DayCareManagement.Factory
 		private static TeacherFactory instance = null;
 		private static int teacherCount = 0;
 
-		private TeacherFactory()
+		public TeacherFactory()
 		{
 
 		}
@@ -86,10 +86,8 @@ namespace DayCareManagement.Factory
 			String firstName = eachLine[0];
 			String lastName = eachLine[1];
 			String isAvailable = eachLine[3];
-			//bool isAvailable = new Boolean;
 			String address = eachLine[2];
 			String phoneNumber = eachLine[4];
-			//String credit = eachLine[5];
 			//Dan  Peters  10  false  Yes  9876543210
 			Console.WriteLine($"{firstName} +  {lastName} + {teacherCount} + {isAvailable} + {address} + {phoneNumber}");
 			return new Teacher(firstName, lastName, teacherCount, Boolean.Parse(isAvailable), address, phoneNumber);

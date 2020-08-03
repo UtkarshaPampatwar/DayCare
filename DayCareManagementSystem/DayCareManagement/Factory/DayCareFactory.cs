@@ -10,6 +10,7 @@ namespace DayCareManagement.Factory
 		private static DayCareFactory instance = null;
 		private EnrollmentRulesFactory enr = null;
 		private StudentFactory sfr = null;
+		private TeacherFactory tfr = null;
 		Models.DayCare dayCare = null;
 		private DayCareFactory()
 		{
@@ -52,6 +53,13 @@ namespace DayCareManagement.Factory
 			}
 			return sfr;
 		}
-
+		public TeacherFactory getTeacherObj()
+		{
+			if (tfr == null)
+			{
+				tfr = new TeacherFactory();
+			}
+			return tfr;
+		}
 	}
 }
