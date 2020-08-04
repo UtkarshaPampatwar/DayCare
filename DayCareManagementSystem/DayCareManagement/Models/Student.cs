@@ -53,6 +53,62 @@ namespace DayCareManagement.Models
         {
             this.ImmunizationRecord = immunizationRecord;
         }
+        public String getPhoneNumber()
+        {
+            return PhoneNumber;
+        }
+        public void setPhoneNumber(String phoneNumber)
+        {
+            this.PhoneNumber = phoneNumber;
+        }
+        public DateTime getDateOfJoining()
+        {
+            return DateOfJoining;
+        }
+        public void setDateOfJoining(DateTime dateOfJoining)
+        {
+            this.DateOfJoining = dateOfJoining;
+        }
+        public int getGroupID()
+        {
+            return GroupID;
+        }
+        public void setGroupID(int groupID)
+        {
+            this.GroupID = groupID;
+        }
+        public int getClassID()
+        {
+            return ClassID;
+        }
+        public void setClassID(int classID)
+        {
+            this.ClassID = classID;
+        }
+        public int getAge()
+        {
+            return Age;
+        }
+        public void setAge(int age)
+        {
+            this.Age = age;
+        }
 
+        public String getAddress()
+        {
+            return Address;
+        }
+        public void setAddress(String address)
+        {
+            this.Address = address;
+        }
+        public DateTime getDateOfBirth()
+        {
+            return DateOfBirth;
+        }
+        public void setDateOfBirth(DateTime dateOfBirth)
+        {
+            this.DateOfBirth = dateOfBirth;
+        }
     }
 }

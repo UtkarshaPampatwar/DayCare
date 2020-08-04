@@ -118,9 +118,118 @@ namespace DayCareManagement.Controllers
 			return View();
 		}
 
-		public void FileTeacherWrite()
+		[HttpPost]
+		public IActionResult FileStudentWrite()
 		{
+			string fname = null;
+			string lname = null;
+			int age = 0;
+			string fathername = null;
+			string mothername = null;
+			string addr = null; 
+			string phone = null;
+			DateTime doj = new DateTime(2020, 07, 31);
+			DateTime dob = new DateTime(2020, 07, 31);
+			Student student = new Student();
+			if (!string.IsNullOrEmpty(Request.Form["FirstName"]))
+			{
+				fname = Request.Form["FirstName"];
+				student.setFirstName(Request.Form["FirstName"]);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["LastName"]))
+			{
+				lname = Request.Form["LastName"];
+				student.setLastName(Request.Form["LastName"]);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["Age"]))
+			{
+				age = int.Parse(Request.Form["Age"]);
+				student.setAge(age);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["Address"]))
+			{
+				addr = Request.Form["Address"];
+				student.setAddress(Request.Form["Address"]);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["MotherName"]))
+			{
+				mothername = Request.Form["MotherName"];
+				//student.setMoth(Request.Form["Address"]);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["FatherName"]))
+			{
+				fathername = Request.Form["FatherName"];
+				//student.setAddress(Request.Form["Address"]);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["Phone"]))
+			{
+				phone = Request.Form["Phone"];
+				student.setPhoneNumber(Request.Form["Phone"]);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["DOJ"]))
+			{
+				doj = DateTime.Parse(Request.Form["DOJ"]);
+				student.setDateOfJoining(doj);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["DOB"]))
+			{
+				dob = DateTime.Parse(Request.Form["DOB"]);
+				student.setDateOfBirth(dob);
+			}
+			String userData = ++(student.StudentId) + "," + fname + "," + lname + "," + age + "," + addr + "," + mothername + "," + fathername + "," + phone + "," + doj + "," + dob;
+			System.IO.File.AppendAllText("C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\student.csv", userData.ToString());
+			ViewBag.Message = "Student Added Successfully";
+			return View("AddStudent");
+		}
 
+		[HttpPost]
+		public IActionResult FileTeacherWrite()
+		{
+			string fname = null;
+			string lname = null;
+			bool avail = false;
+			string addr = null;
+			string phone =null;
+			Teacher teacher = new Teacher();
+			if (!string.IsNullOrEmpty(Request.Form["FirstName"]))
+			{
+				fname = Request.Form["FirstName"];
+				teacher.setFirstName(Request.Form["FirstName"]);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["LastName"]))
+			{
+				lname = Request.Form["LastName"];
+				teacher.setLastName(Request.Form["LastName"]);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["Availiblity"]))
+			{
+				if (Request.Form["Availiblity"] == "Yes")
+				{
+					avail = true;
+					teacher.setAvailable(true);
+				}
+				else
+				{
+					avail = false;
+					teacher.setAvailable(false);
+				}
+					
+			}
+			if (!string.IsNullOrEmpty(Request.Form["Address"]))
+			{
+				addr = Request.Form["Address"];
+				teacher.setAddress(Request.Form["Address"]);
+			}
+			if (!string.IsNullOrEmpty(Request.Form["Phone"]))
+			{
+				phone = Request.Form["Phone"];
+				teacher.setPhoneNumber(Request.Form["Phone"]);
+			}
+			String userData = (teacher.TeacherId)+1 + "," + fname + "," + lname + "," + avail + "," + addr + "," + phone;
+			System.IO.File.AppendAllText("C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\teacher.csv", userData.ToString());
+			System.IO.File.AppendAllText("C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\teacher.csv", "");
+			ViewBag.Message = "Teacher Added Successfully";
+			return View("AddTeacher");
 		}
 
 		[HttpPost]
@@ -154,6 +263,7 @@ namespace DayCareManagement.Controllers
 		{
 			return View();
 		}
+		[HttpPost]
 		public IActionResult AddTeacher()
 		{
 			return View();

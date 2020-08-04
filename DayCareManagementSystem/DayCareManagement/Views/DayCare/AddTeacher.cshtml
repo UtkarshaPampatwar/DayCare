@@ -3,74 +3,56 @@
     ViewData["Title"] = "AddTeacher";
 }
 
-@{
-    var result = "";
-    var firstName = Html.TextBox("FirstName");
-    var lastName = Html.TextBox("LastName");
-    var avail = Html.TextBox("Availiblity");
-    var address = Html.TextBox("Address");
-    var phone = Html.TextBox("Phone");
-    var userData = firstName + "," + lastName + "," + avail + "," + address + "," + phone;
-    System.IO.File.AppendAllText("C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\teacher.csv", userData.ToString());
-    result = "Information Saved";
-    /*if (IsPost)
-    {
-        var firstName = Request["FirstName"];
-        var lastName = Request["LastName"];
-        var email = Request["Email"];
-
-        var userData = firstName + "," + lastName +
-            "," + email + Environment.NewLine;
-
-        var dataFile = Server.MapPath("~/App_Data/data.txt");
-        File.AppendAllText(@dataFile, userData);
-        result = "Information saved.";
-    }*/
-}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Add Teacher</title>
 </head>
 <body>
-    <form id="form1" method="post">
-        <div>
-            <table>
-                <tr>
-                    <td>First Name:</td>
-                    <td><input id="FirstName" name="FirstName" type="text" /></td>
+    
+    @using (Html.BeginForm("FileTeacherWrite", "DayCare", FormMethod.Post))
+    {
+        <form id="form1" name="Teacher" method="post">
+            <div>
+                <table>
+                    <tr>
+                        <td>First Name:</td>
+                        <td><input id="FirstName" name="FirstName" type="text" /></td>
 
-                </tr>
-                <tr>
-                    <td>Last Name:</td>
-                    <td><input id="LastName" name="LastName" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Availiblity:</td>
-                    <td><input id="Availiblity" name="Availiblity" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Address:</td>
-                    <td><input id="Address" name="Address" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Phone Number:</td>
-                    <td><input id="Phone" name="Phone" type="text" /></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="Submit" /></td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            @if (result != "")
-            {
-                <p>Result: @result</p>
-            }
-        </div>
-    </form>
-</body>
+                    </tr>
+                    <tr>
+                        <td>Last Name:</td>
+                        <td><input id="LastName" name="LastName" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Availiblity:</td>
+                        <td>
+                            <select id="Availiblity">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address:</td>
+                        <td><input id="Address" name="Address" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number:</td>
+                        <td><input id="Phone" name="Phone" type="text" /></td>
+
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" id="btnSubmit" value="Submit" />
+                    </tr>
+
+
+                </table>
+            </div>
+
+        </form>
+    }
+    </body>
 </html>
 <br />
 <br>

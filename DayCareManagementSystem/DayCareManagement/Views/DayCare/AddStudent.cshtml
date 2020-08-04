@@ -3,5 +3,73 @@
     ViewData["Title"] = "AddStudent";
 }
 
-<h1>AddStudent</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+</head>
+<body>
+
+    @using (Html.BeginForm("FileStudentWrite", "DayCare", FormMethod.Post))
+    {
+        <form id="form1" name="Student" method="post">
+            <div>
+                <table>
+                    <tr>
+                        <td>First Name:</td>
+                        <td><input id="FirstName" name="FirstName" type="text" /></td>
+
+                    </tr>
+                    <tr>
+                        <td>Last Name:</td>
+                        <td><input id="LastName" name="LastName" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Age:</td>
+                        <td><input id="Age" name="Age" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Address:</td>
+                        <td><input id="Address" name="Address" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mother's Name:</td>
+                        <td><input id="MotherName" name="MotherName" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Father's Name:</td>
+                        <td><input id="FatherName" name="FatherName" type="text" /></td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Phone Number:</td>
+                        <td><input id="Phone" name="Phone" type="text" /></td>
+
+                    <tr>
+                    <tr>
+                        <td>Date of Joining:</td>
+                        <td><input id="DOJ" name="DOJ" type="date" /></td>
+
+                    <tr>
+                    <tr>
+                        <td>Date of Birth:</td>
+                        <td><input id="DOB" name="DOB" type="date" /></td>
+
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" id="btnSubmit" value="Submit" />
+                    </tr>
+
+
+                </table>
+            </div>
+
+        </form>
+    }
+</body>
+</html>
+<br />
+<br>
 <a asp-area="" asp-controller="DayCare" asp-action="Login">Back</a>
+
