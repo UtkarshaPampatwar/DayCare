@@ -23,8 +23,7 @@ namespace DayCareManagement.Factory
 			}
 			return instance;
 		}
-		string dateString = "06/15/2008";
-		string format = "d";
+		
 		public StudentFactory()
 		{
 		}

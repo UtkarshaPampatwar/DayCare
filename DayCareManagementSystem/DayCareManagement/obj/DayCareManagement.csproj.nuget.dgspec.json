@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj": {}
+    "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Utkarsha\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj": {
+    "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Utkarsha\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
+        "projectUniqueName": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Utkarsha\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
         "projectName": "DayCareManagement",
-        "projectPath": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
+        "projectPath": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Utkarsha\\DayCare\\DayCareManagementSystem\\DayCareManagement\\DayCareManagement.csproj",
         "packagesPath": "C:\\Users\\putka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\obj\\",
+        "outputPath": "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Utkarsha\\DayCare\\DayCareManagementSystem\\DayCareManagement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

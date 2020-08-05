@@ -5,8 +5,8 @@
 @using (Html.BeginForm("RetrieveStudentInfo", "DayCare", FormMethod.Post))
 {
     <h1>GetStudentInfo</h1>
-    <label>Enter the student Id: <span></span> </label>@Html.TextBox("ID")
-
+    <label>Enter the student Id: <span></span> </label>
+    <input id="ID" name="ID" type="text" required />
     <input type="submit" value="Search" />
     <p></p>
 
@@ -105,10 +105,6 @@
 
                 </td>
             </tr>
-
-
-
-
         </table>
     }
 }

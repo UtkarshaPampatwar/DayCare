@@ -25,11 +25,11 @@ namespace DayCareManagement.Controllers
 			_httpContextAccessor = httpContextAccessor;
 		}
 
-		private static String studentFileName = "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\student.csv";
-		private static String teacherFileName = "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\teacher.csv";
+		private static String studentFileName = AppDomain.CurrentDomain.BaseDirectory + "student.csv";
+		private static String teacherFileName = AppDomain.CurrentDomain.BaseDirectory + "teacher.csv";
 		private static String demoFileName = "demo.csv";
-		private static String enrollmentRulesFileName = "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\enrollmentRules.csv";
-		private static String immunizationFileName = "C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\Student_Immunization_Record.csv";
+		private static String enrollmentRulesFileName = AppDomain.CurrentDomain.BaseDirectory + "enrollmentRules.csv";
+		private static String immunizationFileName = AppDomain.CurrentDomain.BaseDirectory + "Student_Immunization_Record.csv";
 
 
 		private Models.DayCare dayCareObj = null;
@@ -41,19 +41,26 @@ namespace DayCareManagement.Controllers
 		private EnrollmentRulesFactory enrollmentFactoryObj = null;
 		private StudentFactory studentFactoryObj = null;
 		private TeacherFactory teacherFactoryObj = null;
-		private String username = "admin";
-		private String password = "admin";
+		
 		[HttpGet]
 		public IActionResult Index()
 		{
 			return View();
 		}
 		[HttpPost]
-		public IActionResult Index(String username1, String password1)
+		public IActionResult Credentials()
 		{
-			Console.WriteLine(username == username1);
-			Console.WriteLine(password == password1);
-			return View("Login");
+			if(Request.Form["username"] == "admin" && Request.Form["password"] == "admin")
+			{
+				return View("Login");
+			}
+			else
+			{
+				//Response.WriteAsync("<script>alert('Invalid credentials')</script>");
+				TempData["Success"] = false;
+				return View("Index");
+			}
+			
 		}
 
 		public IActionResult Privacy()
@@ -176,8 +183,9 @@ namespace DayCareManagement.Controllers
 				dob = DateTime.Parse(Request.Form["DOB"]);
 				student.setDateOfBirth(dob);
 			}
-			String userData = ++(student.StudentId) + "," + fname + "," + lname + "," + age + "," + addr + "," + mothername + "," + fathername + "," + phone + "," + doj + "," + dob;
-			System.IO.File.AppendAllText("C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\student.csv", userData.ToString());
+			String userData = (student.StudentId)+1 + "," + fname + "," + lname + "," + age + "," + addr + "," + mothername + "," + fathername + "," + phone + "," + doj + "," + dob;
+			System.IO.File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "student.csv", "\n");
+			System.IO.File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "student.csv", userData.ToString());
 			ViewBag.Message = "Student Added Successfully";
 			return View("AddStudent");
 		}
@@ -226,8 +234,8 @@ namespace DayCareManagement.Controllers
 				teacher.setPhoneNumber(Request.Form["Phone"]);
 			}
 			String userData = (teacher.TeacherId)+1 + "," + fname + "," + lname + "," + avail + "," + addr + "," + phone;
-			System.IO.File.AppendAllText("C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\teacher.csv", userData.ToString());
-			System.IO.File.AppendAllText("C:\\Users\\putka\\OneDrive\\Documents\\NEU\\Sem 5\\Object Oriented with C#\\Project - Ajay\\DayCare\\DayCareManagementSystem\\DayCareManagement\\teacher.csv", "");
+			System.IO.File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "teacher.csv", "");
+			System.IO.File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "teacher.csv", userData.ToString());
 			ViewBag.Message = "Teacher Added Successfully";
 			return View("AddTeacher");
 		}
@@ -302,11 +310,11 @@ namespace DayCareManagement.Controllers
 
 
 		[HttpPost]
-		public IActionResult RetrieveStudentInfo(String ID)
+		public IActionResult RetrieveStudentInfo()
 		{
 			String studentInfo = "";
 
-			int id = int.Parse(ID);
+			int id = int.Parse(Request.Form["ID"]);
 			Student s1 = null;
 			if (factory.getDayCareObj().getstudentMap().ContainsKey(id))
 			{
@@ -320,9 +328,9 @@ namespace DayCareManagement.Controllers
 
 
 		[HttpPost]
-		public IActionResult RetrieveTeacherStudentInfo(String ID)
+		public IActionResult RetrieveTeacherStudentInfo()
 		{
-			int id = int.Parse(ID);
+			int id = int.Parse(Request.Form["ID"]);
 			Teacher t1 = null;
 			List<Student> studentList = new List<Student>();
 			foreach (Classroom classroom in factory.getDayCareObj().getClassroomList())
