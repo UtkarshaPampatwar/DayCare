@@ -8,7 +8,14 @@ namespace DayCareManagement.Models
 {
 	public class ImmunizationRules
 	{
+		/// <summary>
+		/// numberofDoses determnine if the students is yet to have another vacaccine shot
+		/// </summary>
 		public int maxNumberOfDoses;
+
+		/// <summary>
+		/// List of dosage with intervals for each student
+		/// </summary>
 		public List<int> dosageIntervals;
 
 		public ImmunizationRules()

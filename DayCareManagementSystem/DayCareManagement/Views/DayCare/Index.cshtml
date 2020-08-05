@@ -7,6 +7,7 @@
     <form asp-controller="DayCare" asp-action="Credentials">
         <input type="text" name="username" />
         <input type="password" name="password" />
+        @Html.ValidationSummary(false)
         <input type="submit" name="button1" class="btn btn-primary" />
     </form>
 </div>

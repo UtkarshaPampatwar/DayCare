@@ -8,6 +8,9 @@ using DayCareManagement.Models;
 
 namespace DayCareManagement.Models
 {
+/// <summary>
+/// Definining the Day Care facility
+/// </summary>
 	public class DayCare
 	{
 		private List<Classroom> ClassroomList = new List<Classroom>();

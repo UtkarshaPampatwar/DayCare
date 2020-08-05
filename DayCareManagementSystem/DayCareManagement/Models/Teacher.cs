@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace DayCareManagement.Models
 {
+    /// <summary>
+    /// Defining Teacher class
+    /// </summary>
     public class Teacher:Person
     {
         public int TeacherId { get; set; }

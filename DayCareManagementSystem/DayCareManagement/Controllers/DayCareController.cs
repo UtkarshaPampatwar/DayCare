@@ -25,6 +25,9 @@ namespace DayCareManagement.Controllers
 			_httpContextAccessor = httpContextAccessor;
 		}
 
+		/// <summary>
+		/// Intializaing the CSV files in the application domain
+		/// </summary>
 		private static String studentFileName = AppDomain.CurrentDomain.BaseDirectory + "student.csv";
 		private static String teacherFileName = AppDomain.CurrentDomain.BaseDirectory + "teacher.csv";
 		private static String demoFileName = "demo.csv";
@@ -32,6 +35,9 @@ namespace DayCareManagement.Controllers
 		private static String immunizationFileName = AppDomain.CurrentDomain.BaseDirectory + "Student_Immunization_Record.csv";
 
 
+		/// <summary>
+		/// Intializaing the factory objects
+		/// </summary>
 		private Models.DayCare dayCareObj = null;
 
 		public static Dictionary<String, ImmunizationRules> immunizationRules = new Dictionary<String, ImmunizationRules>();
@@ -47,6 +53,10 @@ namespace DayCareManagement.Controllers
 		{
 			return View();
 		}
+		/// <summary>
+		/// Admin login controller
+		/// </summary>
+		/// <returns>View</returns>
 		[HttpPost]
 		public IActionResult Credentials()
 		{
@@ -56,7 +66,7 @@ namespace DayCareManagement.Controllers
 			}
 			else
 			{
-				//Response.WriteAsync("<script>alert('Invalid credentials')</script>");
+				ModelState.AddModelError("", "Wrong username and password");
 				TempData["Success"] = false;
 				return View("Index");
 			}
@@ -77,27 +87,19 @@ namespace DayCareManagement.Controllers
 			return dayCareObj;
 		}
 
-
-
 		public void setDayCareObj(DayCare dayCareObj)
 		{
 			this.dayCareObj = dayCareObj;
 		}
-
-
-
 		public DayCareFactory getDayCarefactoryObj()
 		{
 			return dayCarefactoryObj;
 		}
 
-
-
 		public void setDayCarefactoryObj(DayCareFactory dayCarefactoryObj)
 		{
 			this.dayCarefactoryObj = dayCarefactoryObj;
 		}
-
 
 		public EnrollmentRulesFactory getEnrollmentFactoryObj()
 		{
@@ -239,7 +241,10 @@ namespace DayCareManagement.Controllers
 			ViewBag.Message = "Teacher Added Successfully";
 			return View("AddTeacher");
 		}
-
+		/// <summary>
+		/// Define Rules
+		/// </summary>
+		/// <returns></returns>
 		[HttpPost]
 		public IActionResult Rules()
 		{
@@ -307,7 +312,10 @@ namespace DayCareManagement.Controllers
 			return View();
 		}
 
-
+		/// <summary>
+		/// Retrieve Student information
+		/// </summary>
+		/// <returns></returns>
 
 		[HttpPost]
 		public IActionResult RetrieveStudentInfo()
@@ -326,6 +334,10 @@ namespace DayCareManagement.Controllers
 			return View("GetStudentInfo", s1);
 		}
 
+		/// <summary>
+		/// Retrieve Teacher-Student information
+		/// </summary>
+		/// <returns></returns>
 
 		[HttpPost]
 		public IActionResult RetrieveTeacherStudentInfo()
@@ -388,6 +400,10 @@ namespace DayCareManagement.Controllers
 			return studentImmInfo;
 		}
 
+		/// <summary>
+		/// Getting immunization details for all students
+		/// </summary>
+		/// <returns></returns>
 		public List<String> sendAllStudentImmunizationDetails()
 		{
 			List<String> detailsOfStudentImmunizationRecord = new List<String>();
@@ -443,7 +459,10 @@ namespace DayCareManagement.Controllers
 			factory.getDayCareObj().enrollStudent(studentList);
 		
 		}
-
+		/// <summary>
+		/// getting enrollments status of classroom for every group
+		/// </summary>
+		/// <returns></returns>
 		public List<String> getEnrollmentStatus()
 		{
 			
@@ -489,6 +508,9 @@ namespace DayCareManagement.Controllers
 
 			return studentdataList;
 		}
+		/// <summary>
+		/// Creating day care immunization rules
+		/// </summary>
 		public static void createDayCareImmunizationRules()
 		{
 			int[] hib = { 2, 4, 6, 15 };

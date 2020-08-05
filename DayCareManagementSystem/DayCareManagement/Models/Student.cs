@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DayCareManagement.Models
 {
+    /// <summary>
+    /// Creating Student class
+    /// </summary>
     public class Student:Person
     {
         public int StudentId { get; set; }
